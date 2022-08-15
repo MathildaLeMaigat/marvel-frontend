@@ -8,15 +8,17 @@ const Characters = () => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   // Requete
   useEffect(() => {
     try {
       const fetchData = async () => {
+        let skipData = (page - 1) * 100;
         const response = await axios.get(
-          `https://marvel-backend-math.herokuapp.com/characters`
+          `https://marvel-backend-math.herokuapp.com/characters?&limit=100&skip=${skipData}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       };
@@ -24,13 +26,13 @@ const Characters = () => {
     } catch (error) {
       console.log({ error: error.message });
     }
-  }, []);
+  }, [page]);
 
   return isLoading ? (
-    <div>Loading...</div>
+    <h1>Loading...</h1>
   ) : (
     <div className="container">
-      <h1>Marvel's characters</h1>
+      <h1>Marvel's Characters</h1>
       <div className="container-card">
         {data.results.map((character, index) => {
           return (
@@ -43,6 +45,23 @@ const Characters = () => {
             />
           );
         })}
+      </div>
+      <div className="pagination">
+        <button
+          className="page-button"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        >
+          -
+        </button>
+        <p className="page-number">{page}</p>
+        <button
+          className="page-button"
+          onClick={() => setPage(page + 1)}
+          disabled={data.length < 100}
+        >
+          +
+        </button>
       </div>
     </div>
   );

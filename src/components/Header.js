@@ -4,11 +4,11 @@ import logo from "../assets/img/marvel.logo.png";
 const Header = () => {
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/characters">
         <img src={logo} alt="logo" />
       </Link>
 
-      <Link to="/character">
+      <Link to="/characters">
         <p>Personnages</p>
       </Link>
       <Link to="/comics">

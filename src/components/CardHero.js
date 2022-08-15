@@ -1,15 +1,21 @@
-const CardHero = ({ name, photo, description }) => {
+import { Link } from "react-router-dom";
+
+const CardHero = ({ name, photo, description, id }) => {
   return (
     <div className="card-hero">
-      <div>
+      <Link className="link-hero" to={`/character/comics/${id}`}>
         <div className="nameHero">{name}</div>
         <div className="container-img">
           <img className="imgHero" src={photo} alt="card-hero" />
         </div>
         <div className="desc-container">
-          <div className="descriptionHero">{description}</div>
+          {description ? (
+            <div className="descriptionHero">{description}</div>
+          ) : (
+            <p>No description</p>
+          )}
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
