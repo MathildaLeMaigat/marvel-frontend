@@ -9,6 +9,7 @@ const Characters = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState();
 
   // Requete
   useEffect(() => {
@@ -16,7 +17,7 @@ const Characters = () => {
       const fetchData = async () => {
         let skipData = (page - 1) * 100;
         const response = await axios.get(
-          `https://marvel-backend-math.herokuapp.com/characters?&limit=100&skip=${skipData}`
+          `https://marvel-backend-math.herokuapp.com/characters?&limit=100&skip=${skipData}&search=${search}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -33,6 +34,7 @@ const Characters = () => {
   ) : (
     <div className="container">
       <h1>Marvel's Characters</h1>
+      {/* <input placeholder="Search for a character" type="text" value={search} /> */}
       <div className="container-card">
         {data.results.map((character, index) => {
           return (
