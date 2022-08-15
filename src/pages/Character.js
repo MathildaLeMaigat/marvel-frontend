@@ -5,7 +5,7 @@ import CardComics from "../components/CardComics";
 
 const Character = () => {
   const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   console.log(id);
 
@@ -30,21 +30,23 @@ const Character = () => {
   ) : (
     <div className="container">
       <h1>{data.name}</h1>
-      <div>
-        <img
-          className="hero-img"
-          src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-          alt="img character"
-        />
-        <div>
-          {data.description ? (
-            <div className="descriptionHero">{data.description}</div>
-          ) : (
-            <p>No description</p>
-          )}
+      <div className="topContainer">
+        <div className="cardv2">
+          <img
+            className="hero-img"
+            src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+            alt="img character"
+          />
+          <div className="descriptionCharac">
+            {data.description ? (
+              <div className="descriptionCharac">{data.description}</div>
+            ) : (
+              <p className="descriptionCharac">No description</p>
+            )}
+          </div>
         </div>
       </div>
-
+      <h2>You can find {data.name} in :</h2>
       <div className="container-card">
         {data.comics.map((elem, index) => {
           return (

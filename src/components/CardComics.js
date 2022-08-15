@@ -10,7 +10,7 @@ const CardComics = ({ name, photo, description }) => {
           {description ? (
             <div className="descriptionHero">{description}</div>
           ) : (
-            <p>No description</p>
+            <p className="nodescription">No description</p>
           )}
         </div>
       </div>
