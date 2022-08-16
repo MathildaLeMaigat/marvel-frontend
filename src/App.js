@@ -27,6 +27,7 @@ function App() {
       Cookies.remove("userToken");
     }
   };
+  // console.log(handleToken);
 
   return (
     <div className="app">
@@ -39,10 +40,9 @@ function App() {
           <Route path="/favoris" element={<Favoris />} />
           <Route
             path="/signup"
-            element={<SignUp />}
-            handleToken={handleToken}
+            element={<SignUp handleToken={handleToken} />}
           />
-          <Route path="/login" element={<LogIn />} handleToken={handleToken} />
+          <Route path="/login" element={<LogIn handleToken={handleToken} />} />
         </Routes>
       </Router>
     </div>

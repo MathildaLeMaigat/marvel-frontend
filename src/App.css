@@ -216,7 +216,8 @@ h2 {
 
 /* SIGN UP */
 
-.signup-container {
+.signup-container,
+.login-container {
   display: flex;
   flex-direction: column;
   width: 50vw;
@@ -226,7 +227,8 @@ h2 {
   margin-top: 40px;
 }
 
-.signup-container input {
+.signup-container input,
+.login-container input {
   border: none;
   border-bottom: 1px red solid;
   width: 50%;
@@ -236,7 +238,8 @@ h2 {
   margin-bottom: 40px;
 }
 
-.signup-button {
+.signup-button,
+.signin-button {
   border: 1px solid black;
   background-color: wheat;
   padding: 5px 50px;

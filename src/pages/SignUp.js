@@ -1,11 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ handleToken }) => {
   // STATES
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,8 +23,9 @@ const SignUp = ({ handleToken }) => {
       );
       // console.log(response.data);
       handleToken(response.data.token);
+      navigate("/characters");
     } catch (error) {
-      console.log({ error: error.message });
+      console.log({ error: error.response });
     }
   };
 
