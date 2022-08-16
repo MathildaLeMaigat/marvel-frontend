@@ -12,8 +12,13 @@ const LogIn = () => {
     try {
       const response = await axios.post(
         "https://marvel-backend-math.herokuapp.com/user/login",
-        {}
+        {
+          // j'envoie une cle email/pw avec le state email/pw
+          email: email,
+          password: password,
+        }
       );
+      console.log(response.data);
     } catch (error) {
       console.log({ error: error.response });
     }
