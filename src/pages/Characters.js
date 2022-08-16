@@ -1,6 +1,7 @@
 // Imports
 import axios from "axios";
 import { useState, useEffect } from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CardHero from "../components/CardHero";
 
@@ -9,7 +10,7 @@ const Characters = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
 
   // Requete
   useEffect(() => {
@@ -27,14 +28,28 @@ const Characters = () => {
     } catch (error) {
       console.log({ error: error.message });
     }
-  }, [page]);
+  }, [page, search]);
 
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (
     <div className="container">
       <h1>Marvel's Characters</h1>
-      {/* <input placeholder="Search for a character" type="text" value={search} /> */}
+      <div className="box-search">
+        <input
+          className="searchBar"
+          placeholder="Search for a character"
+          type="text"
+          value={search}
+          onChange={(event) => {
+            setSearch(event.target.value);
+          }}
+        />
+        <span className="count">
+          <span className="count-span">{data.count}</span> characters found
+        </span>
+      </div>
+
       <div className="container-card">
         {data.results.map((character, index) => {
           return (

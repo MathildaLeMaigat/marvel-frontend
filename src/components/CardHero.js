@@ -6,6 +6,7 @@ const CardHero = ({ name, photo, description, id }) => {
       <Link className="link-hero" to={`/comics/${id}`}>
         <div>
           <p className="nameHero">{name}</p>
+
           <div className="container-img">
             <img className="imgHero" src={photo} alt="card-hero" />
           </div>

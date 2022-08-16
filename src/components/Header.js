@@ -15,10 +15,18 @@ const Header = () => {
         <p>Comics</p>
       </Link>
 
-      <p>Favoris</p>
+      <Link to="/favoris">
+        <p>Favoris</p>
+      </Link>
+      <Link to="/login">
+        <p>Log In</p>
+      </Link>
 
-      <p>Se connecter</p>
-      <p>S'inscrire</p>
+      <Link to="signup">
+        <p>Sign Up</p>
+      </Link>
+
+      <p>Log Out</p>
     </div>
   );
 };
