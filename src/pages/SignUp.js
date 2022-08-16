@@ -53,7 +53,8 @@ const SignUp = ({ handleToken }) => {
             setPassword(event.target.value);
           }}
         />
-        <button className="signup-button">Subscribe</button>
+        {/* <button className="signup-button">Subscribe</button> */}
+        <input type="submit" value="Subscribe" />
       </form>
     </div>
   );
