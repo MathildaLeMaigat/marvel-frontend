@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/marvel.logo.png";
+import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ handleToken, userToken }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="header">
       <Link to="/characters">
@@ -18,15 +21,27 @@ const Header = () => {
       <Link to="/favoris">
         <p>Favoris</p>
       </Link>
-      <Link to="/login">
-        <p>Log In</p>
-      </Link>
 
-      <Link to="signup">
-        <p>Sign Up</p>
-      </Link>
-
-      <p>Log Out</p>
+      {!userToken ? (
+        <>
+          <Link to="/login">
+            <button>Log In</button>
+          </Link>
+          <Link to="signup">
+            <button>Sign Up</button>
+          </Link>
+        </>
+      ) : (
+        <button
+          className="logout-button"
+          onClick={() => {
+            handleToken();
+            navigate("/characters");
+          }}
+        >
+          Log Out
+        </button>
+      )}
     </div>
   );
 };

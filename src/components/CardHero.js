@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CardHero = ({ name, photo, description, id }) => {
   return (
     <div className="card-hero">
       <Link className="link-hero" to={`/comics/${id}`}>
         <div>
-          <p className="nameHero">{name}</p>
-
+          <div className="bloc-name">
+            <p className="nameHero">{name}</p>
+            <FontAwesomeIcon
+              icon="heart"
+              className="heart"
+              onClick={{ color: "red" }}
+            />
+          </div>
           <div className="container-img">
             <img className="imgHero" src={photo} alt="card-hero" />
           </div>

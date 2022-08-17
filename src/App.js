@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useState } from "react";
 
 // Import Pages
 import Characters from "./pages/Characters";
@@ -12,27 +13,33 @@ import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 
 // FONT AWESOME
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-// library.add(faMagnifyingGlass);
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+library.add(faHeart);
 
 function App() {
-  // fonction a laquelle lorsque je lui donne quelque chose (token) elle l'enregistre en tant que userToken
+  // Ce state va prendre la valeur du cookie si celui-ci
+  // est enregistré . Sije ne trouve pas de cookie ayant pour valeur "userToken" il sera egale a "null"
+  const [userToken, setUserToken] = useState(Cookies.get("userToken" || null));
+
+  // fonction a laquelle lorsque je lui donne quelque chose (token) elle
+  // l'enregistre en tant que userToken
   const handleToken = (token) => {
     if (token) {
       // Nom,valeur,expire
       Cookies.set("userToken", token, { expires: 7 });
+      setUserToken(token);
     } else {
       // Nom du token a supprimer
       Cookies.remove("userToken");
+      setUserToken(null);
     }
   };
-  // console.log(handleToken);
 
   return (
     <div className="app">
       <Router>
-        <Header handleToken={handleToken} />
+        <Header handleToken={handleToken} userToken={userToken} />
         <Routes>
           <Route path="/characters" element={<Characters />} />
           <Route path="/comics" element={<Comics />} />
