@@ -7,7 +7,7 @@ const Character = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     try {
@@ -15,7 +15,7 @@ const Character = () => {
         const response = await axios.get(
           `https://marvel-backend-math.herokuapp.com/comics/${id}`
         );
-        console.log(response.data);
+        // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       };

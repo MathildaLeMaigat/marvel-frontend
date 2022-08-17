@@ -9,7 +9,7 @@ const SignUp = ({ handleToken }) => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  console.log("handletoken", handleToken);
+  // console.log("handletoken", handleToken);
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

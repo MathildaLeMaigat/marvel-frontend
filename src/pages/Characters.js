@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 
 import CardHero from "../components/CardHero";
 
@@ -11,6 +12,8 @@ const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  // const [favorites, setFavorites] = useState([]);
+  // const favoritesCookie = JSON.parse(Cookies.get("favoris"));
 
   // Requete
   useEffect(() => {
@@ -59,6 +62,7 @@ const Characters = () => {
               description={character.description}
               photo={`${character.thumbnail.path}.${character.thumbnail.extension}`}
               id={character._id}
+              character={character}
             />
           );
         })}

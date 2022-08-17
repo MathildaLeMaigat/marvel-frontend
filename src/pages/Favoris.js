@@ -1,17 +1,42 @@
 // Imports
-import axios from "axios";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Favoris = () => {
+  const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav"));
+
+  // let tabCookie = Cookies.get("Charac-Fav");
+  // for (let i = 0; i < tabCookie.length; i++) {
+  //   if (tabCookie[i]._id) {
+  //     console.log(tabCookie[i]._id);
+  //   }
+  // }
+
   return (
-    <h1>
-      Your Favorites{" "}
-      <div className="fav-icone">
-        <FontAwesomeIcon icon="heart" />
+    <div className="container">
+      <h1>Your Favorites</h1>
+      <div className="container-card">
+        {parsedTabFav.map((character, index) => {
+          return (
+            <div className="card-hero" key={character._id}>
+              <p className="nameHero">{character.name}</p>
+              <img
+                className="imgHero"
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt="img-charc"
+              />
+              <div className="desc-container">
+                {character.description ? (
+                  <div className="descriptionHero">{character.description}</div>
+                ) : (
+                  <p className="nodescription">No description</p>
+                )}
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </h1>
+    </div>
   );
 };
 
