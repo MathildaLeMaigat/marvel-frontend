@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 const Favoris = () => {
-  const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav"));
-
+  const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav") || false);
+  console.log(parsedTabFav);
   // let tabCookie = Cookies.get("Charac-Fav");
   // for (let i = 0; i < tabCookie.length; i++) {
   //   if (tabCookie[i]._id) {
