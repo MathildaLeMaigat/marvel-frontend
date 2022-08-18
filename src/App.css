@@ -135,6 +135,7 @@ h2 {
   background-color: wheat;
   overflow: scroll;
   box-sizing: border-box;
+  position: relative;
 }
 .card-hero:hover,
 .card-comics {
@@ -146,11 +147,10 @@ h2 {
   background-color: wheat;
   /* justify-content: center;
   align-items: center; */
-  position: relative;
 }
 
 .heart {
-  background-color: wheat;
+  /* background-color: wheat; */
   height: 20px;
   position: absolute;
   right: 10px;

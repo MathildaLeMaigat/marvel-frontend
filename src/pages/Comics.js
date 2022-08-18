@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CardComics from "../components/CardComics";
 
-const Comics = () => {
+const Comics = ({ handleFav2 }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -51,6 +51,7 @@ const Comics = () => {
         {data.results.map((elem, index) => {
           return (
             <CardComics
+              // handleFav2={handleFav2}
               key={elem._id}
               name={elem.title}
               description={elem.description}

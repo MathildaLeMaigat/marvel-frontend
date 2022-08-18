@@ -19,7 +19,7 @@ const Header = ({ handleToken, userToken }) => {
       </Link>
 
       <Link to="/favoris">
-        <p>Favoris</p>
+        <p>Favorites</p>
       </Link>
 
       {!userToken ? (

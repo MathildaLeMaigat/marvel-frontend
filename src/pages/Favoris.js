@@ -1,17 +1,12 @@
 // Imports
-import { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
-const Favoris = () => {
-  // const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav") || "[]");
-  // console.log(parsedTabFav);
-
-  const parsedTabFav = [];
+const Favoris = ({ favorite }) => {
+  // console.log("fav", favorite);
   return (
     <div className="container">
       <h1>Your Favorites</h1>
       <div className="container-card">
-        {parsedTabFav.map((character, index) => {
+        {favorite.map((character, index) => {
           return (
             <div className="card-hero" key={character._id}>
               <p className="nameHero">{character.name}</p>

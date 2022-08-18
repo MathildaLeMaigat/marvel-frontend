@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { useState } from "react";
+// import Cookies from "js-cookie";
 
-const CardHero = ({ name, photo, description, id }) => {
+const CardHero = ({ character, photo, id, name, description, handleFav }) => {
   return (
     <div className="card-hero">
+      <FontAwesomeIcon
+        icon="heart"
+        className="heart"
+        onClick={() => {
+          handleFav(character);
+        }}
+      />
       <Link className="link-hero" to={`/comics/${id}`}>
         <div>
           <div className="bloc-name">
-            <p className="nameHero">{name}</p>
-            <FontAwesomeIcon
-              icon="heart"
-              className="heart"
-              onClick={{ color: "red" }}
-            />
+            <p className="nameHero">{character.name}</p>
           </div>
           <div className="container-img">
             <img className="imgHero" src={photo} alt="card-hero" />

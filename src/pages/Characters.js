@@ -1,8 +1,8 @@
 // Imports
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Cookies from "js-cookie";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import Cookies from "js-cookie";
 
 import CardHero from "../components/CardHero";
 
@@ -12,8 +12,6 @@ const Characters = ({ handleFav }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  // const [favorites, setFavorites] = useState([]);
-  // const favoritesCookie = JSON.parse(Cookies.get("favoris"));
 
   // Requete
   useEffect(() => {
@@ -57,9 +55,7 @@ const Characters = ({ handleFav }) => {
         {data.results.map((character, index) => {
           return (
             <CardHero
-              // onClick={() => {
-              //   handleFav(character);
-              // }}
+              handleFav={handleFav}
               key={character._id}
               name={character.name}
               description={character.description}
