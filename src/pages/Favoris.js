@@ -3,17 +3,10 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 const Favoris = () => {
-  Cookies.get("Charac-Fav");
-  const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav") || false);
-  console.log(parsedTabFav);
+  // const parsedTabFav = JSON.parse(Cookies.get("Charac-Fav") || "[]");
+  // console.log(parsedTabFav);
 
-  // let tabCookie = Cookies.get("Charac-Fav");
-  // for (let i = 0; i < tabCookie.length; i++) {
-  //   if (tabCookie[i]._id) {
-  //     console.log(tabCookie[i]._id);
-  //   }
-  // }
-
+  const parsedTabFav = [];
   return (
     <div className="container">
       <h1>Your Favorites</h1>

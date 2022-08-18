@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 import CardHero from "../components/CardHero";
 
-const Characters = () => {
+const Characters = ({ handleFav }) => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -57,6 +57,9 @@ const Characters = () => {
         {data.results.map((character, index) => {
           return (
             <CardHero
+              // onClick={() => {
+              //   handleFav(character);
+              // }}
               key={character._id}
               name={character.name}
               description={character.description}
