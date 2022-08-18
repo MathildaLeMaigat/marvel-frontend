@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CardComics = ({ name, photo, description, handleFav2, elem }) => {
+  // console.log(elem);
   return (
     <div className="card-comics">
       <FontAwesomeIcon

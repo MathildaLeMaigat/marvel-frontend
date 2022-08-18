@@ -24,7 +24,10 @@ function App() {
 
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
   // pour avoir les info de maniere persistante, on doit recuperer le cookie et le stocker dans une variable. Dans le state , avoir une ternaire qui dit si la variable existe alors tu peut faire un JSON.parse. Sinon le state aura un tableau vide
-  const [favorite, setFavorite] = useState(
+  const [favoriteCharac, setFavoriteCharac] = useState(
+    favCookie ? JSON.parse(favCookie) : []
+  );
+  const [favoriteComics, setFavoriteComics] = useState(
     favCookie ? JSON.parse(favCookie) : []
   );
 
@@ -50,42 +53,45 @@ function App() {
   // etape 5: sinon l'ajouter et restringifier et l'envoyer dans les cookie
 
   const handleFav = (character) => {
-    const tabFavCookie = [...favorite];
+    const tabFavCookie = [...favoriteCharac];
+    console.log("fav2", tabFavCookie);
     let isInFav = false;
+
     for (let i = 0; i < tabFavCookie.length; i++) {
-      // tabFavCookie[i]._id = character._id;
+      console.log("tab1", tabFavCookie[i]);
       if (tabFavCookie[i]._id === character._id) {
         console.log("J'existe ");
         isInFav = true;
-        Cookies.remove("Fav");
         alert("Charac already in Fav");
       }
     }
     if (isInFav === false) {
       console.log("J'existe pas ");
       tabFavCookie.push(character);
-      setFavorite(tabFavCookie);
-      Cookies.set("Fav", JSON.stringify(tabFavCookie));
+      setFavoriteCharac(tabFavCookie);
+      Cookies.set("Fav", JSON.stringify(tabFavCookie), { expire: 300 });
     }
     console.log("cookie", tabFavCookie);
   };
 
   const handleFav2 = (elem) => {
-    const tabFavCookie = [...favorite];
+    const tabFavCookie = [...favoriteComics];
+    // console.log("fav2", tabFavCookie);
     let isInFav = false;
     for (let i = 0; i < tabFavCookie.length; i++) {
-      if (tabFavCookie[i].results._id === elem._id) {
+      // console.log("tabfav", tabFavCookie[i]._id);
+      // console.log("elem", elem._id);
+      if (tabFavCookie[i]._id === elem._id) {
         console.log("J'existe ");
         isInFav = true;
-        Cookies.remove("Fav");
         alert("Charac already in Fav");
       }
     }
     if (isInFav === false) {
       console.log("J'existe pas ");
       tabFavCookie.push(elem);
-      setFavorite(tabFavCookie);
-      Cookies.set("Fav", JSON.stringify(tabFavCookie));
+      setFavoriteComics(tabFavCookie);
+      Cookies.set("Fav", JSON.stringify(tabFavCookie), { expire: 300 });
     }
     console.log("cookie2", tabFavCookie);
     // console.log("handlefav2", handleFav2);
@@ -102,7 +108,15 @@ function App() {
           />
           <Route path="/comics" element={<Comics handleFav2={handleFav2} />} />
           <Route path="/comics/:id" element={<Character />} />
-          <Route path="/favoris" element={<Favoris favorite={favorite} />} />
+          <Route
+            path="/favoris"
+            element={
+              <Favoris
+                favoriteCharac={favoriteCharac}
+                favoriteComics={favoriteComics}
+              />
+            }
+          />
           <Route
             path="/signup"
             element={<SignUp handleToken={handleToken} />}

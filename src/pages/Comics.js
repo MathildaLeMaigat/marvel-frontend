@@ -51,6 +51,7 @@ const Comics = ({ handleFav2 }) => {
         {data.results.map((elem, index) => {
           return (
             <CardComics
+              elem={elem}
               handleFav2={handleFav2}
               key={elem._id}
               name={elem.title}
