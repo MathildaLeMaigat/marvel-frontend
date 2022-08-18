@@ -18,9 +18,13 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
+  const stringifyCookie = JSON.parse(Cookies.get("Charac-Fav"));
   // Ce state va prendre la valeur du cookie si celui-ci
   // est enregistré . Sije ne trouve pas de cookie ayant pour valeur "userToken" il sera egale a "null"
-  const [userToken, setUserToken] = useState(Cookies.get("userToken" || null));
+
+  const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  // pour avoir les info de maniere persistante, on doit recuperer le cookie et le stocker dans une variable. Dans le state , avoir une ternaire qui dit si la variable existe alors tu peut faire un JSON.parse. Sinon le state aura un tableau vide
+  const [favorite, setFavorite] = useState(stringifyCookie || []);
 
   // fonction a laquelle lorsque je lui donne quelque chose (token) elle
   // l'enregistre en tant que userToken
@@ -36,14 +40,28 @@ function App() {
     }
   };
 
+  // Cookie
+  const handleFav = () => {
+    const tabFavCookie = [...favorite];
+    tabFavCookie.push(Cookies.set("Fav", JSON.stringify(tabFavCookie)));
+    setFavorite(tabFavCookie);
+
+    // console.log(handleFav);
+  };
   return (
     <div className="app">
       <Router>
         <Header handleToken={handleToken} userToken={userToken} />
         <Routes>
-          <Route path="/characters" element={<Characters />} />
+          <Route
+            path="/characters"
+            element={<Characters handleFav={handleFav} />}
+          />
           <Route path="/comics" element={<Comics />} />
-          <Route path="/comics/:id" element={<Character />} />
+          <Route
+            path="/comics/:id"
+            element={<Character handleFav={handleFav} />}
+          />
           <Route path="/favoris" element={<Favoris />} />
           <Route
             path="/signup"
