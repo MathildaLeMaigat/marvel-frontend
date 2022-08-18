@@ -16,7 +16,7 @@ const Comics = ({ handleFav2 }) => {
         const response = await axios.get(
           `https://marvel-backend-math.herokuapp.com/comics?&limit=100&skip=${skipData}&search=${search}`
         );
-        console.log(response.data);
+        console.log("comics", response.data);
         setData(response.data);
         setIsLoading(false);
       };
@@ -51,7 +51,7 @@ const Comics = ({ handleFav2 }) => {
         {data.results.map((elem, index) => {
           return (
             <CardComics
-              // handleFav2={handleFav2}
+              handleFav2={handleFav2}
               key={elem._id}
               name={elem.title}
               description={elem.description}

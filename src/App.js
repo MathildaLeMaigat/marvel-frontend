@@ -70,25 +70,26 @@ function App() {
     console.log("cookie", tabFavCookie);
   };
 
-  // const handleFav2 = (elem) => {
-  //   const tabFavCookie = [...favorite];
-  //   let isInFav = false;
-  //   for (let i = 0; i < tabFavCookie.length; i++) {
-  //     // tabFavCookie[i]._id = character._id;
-  //     if (tabFavCookie.results[i]._id === elem.results._id) {
-  //       console.log("J'existe ");
-  //       isInFav = true;
-  //       Cookies.remove("Fav");
-  //       alert("Charac already in Fav");
-  //     }
-  //   }
-  //   if (isInFav === false) {
-  //     console.log("J'existe pas ");
-  //     tabFavCookie.push(elem);
-  //     setFavorite(tabFavCookie);
-  //     Cookies.set("Fav", JSON.stringify(tabFavCookie));
-  //   }
-  // };
+  const handleFav2 = (elem) => {
+    const tabFavCookie = [...favorite];
+    let isInFav = false;
+    for (let i = 0; i < tabFavCookie.length; i++) {
+      if (tabFavCookie[i].results._id === elem._id) {
+        console.log("J'existe ");
+        isInFav = true;
+        Cookies.remove("Fav");
+        alert("Charac already in Fav");
+      }
+    }
+    if (isInFav === false) {
+      console.log("J'existe pas ");
+      tabFavCookie.push(elem);
+      setFavorite(tabFavCookie);
+      Cookies.set("Fav", JSON.stringify(tabFavCookie));
+    }
+    console.log("cookie2", tabFavCookie);
+    // console.log("handlefav2", handleFav2);
+  };
 
   return (
     <div className="app">
@@ -99,7 +100,7 @@ function App() {
             path="/characters"
             element={<Characters handleFav={handleFav} />}
           />
-          <Route path="/comics" element={<Comics />} />
+          <Route path="/comics" element={<Comics handleFav2={handleFav2} />} />
           <Route path="/comics/:id" element={<Character />} />
           <Route path="/favoris" element={<Favoris favorite={favorite} />} />
           <Route
