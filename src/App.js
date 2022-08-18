@@ -18,7 +18,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 
 function App() {
-  const stringifyCookie = JSON.parse(Cookies.get("Charac-Fav"));
+  const stringifyCookie = JSON.parse(Cookies.get("Fav"));
   // Ce state va prendre la valeur du cookie si celui-ci
   // est enregistré . Sije ne trouve pas de cookie ayant pour valeur "userToken" il sera egale a "null"
 
