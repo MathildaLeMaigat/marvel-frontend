@@ -12,7 +12,7 @@ const Header = ({ handleToken, userToken }) => {
       </Link>
 
       <Link to="/characters">
-        <p>Personnages</p>
+        <p>Characters</p>
       </Link>
       <Link to="/comics">
         <p>Comics</p>

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Marvel&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 /* General Rules */
 * {
@@ -7,7 +6,6 @@
 }
 .app {
   font-family: "Marvel", sans-serif;
-  /* font-family: "Roboto", sans-serif; */
 }
 
 a {
@@ -20,6 +18,7 @@ a {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  margin-bottom: 100px;
 }
 
 h1 {
@@ -35,6 +34,19 @@ h2 {
   font-size: 40px;
   color: white;
   margin-bottom: 60px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-size: 20px;
+  color: orange;
+  margin-bottom: 30px;
 }
 
 /* HEADER */
@@ -151,15 +163,31 @@ h2 {
 }
 
 .heart {
-  /* background-color: wheat; */
-  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
   position: absolute;
   right: 10px;
   top: 10px;
   color: brown;
   border: black 1px solid;
   border-radius: 50%;
-  padding: 5px;
+  padding: 10px;
+}
+
+.heart2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: white;
+  border: black 1px solid;
+  border-radius: 50%;
+  padding: 10px;
 }
 
 .nameHero,
@@ -167,7 +195,7 @@ h2 {
   text-align: center;
   font-size: 20px;
   height: 50px;
-  padding: 20px;
+  margin-top: 45px;
   font-weight: bold;
   background-color: wheat;
 }
@@ -176,7 +204,6 @@ h2 {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border: 2px solid black;
   box-sizing: border-box;
 }
 
@@ -201,11 +228,20 @@ h2 {
   color: white;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 }
 .page-number {
   color: white;
   font-size: 30px;
   padding: 0 30px;
+}
+
+.page-option {
+  color: white;
+  margin-left: 30px;
+  border-radius: 5px;
+  padding: 0 40px;
+  outline: none;
 }
 
 /* Character */
@@ -216,7 +252,7 @@ h2 {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   box-sizing: border-box;
-  border: black 2px solid;
+  /* border: black 2px solid; */
   object-fit: cover;
 }
 
@@ -285,4 +321,22 @@ h2 {
   /* font-weight: bold; */
   color: black;
   margin-top: 50px;
+}
+
+/* Fav */
+.img-fav {
+  width: 100px;
+  height: 100px;
+}
+
+.fav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.comics-box-fav {
+  margin-top: 100px;
 }

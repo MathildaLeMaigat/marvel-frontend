@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CardComics from "../components/CardComics";
+// import CardHero from "../components/CardHero";
 
 const Character = () => {
   const [data, setData] = useState({});
@@ -46,11 +47,13 @@ const Character = () => {
           </div>
         </div>
       </div>
+
       <h2>You can find {data.name} in :</h2>
       <div className="container-card">
         {data.comics.map((elem, index) => {
           return (
             <CardComics
+              favable={true}
               key={elem._id}
               name={elem.title}
               description={elem.description}

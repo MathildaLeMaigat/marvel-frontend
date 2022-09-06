@@ -21,7 +21,7 @@ const LogIn = ({ handleToken }) => {
           password: password,
         }
       );
-      //   console.log(response.data);
+      // console.log(response.data);
       handleToken(response.data.token);
       navigate("/characters");
     } catch (error) {

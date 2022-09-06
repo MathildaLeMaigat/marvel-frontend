@@ -6,36 +6,39 @@ import { useState, useEffect } from "react";
 
 import CardHero from "../components/CardHero";
 
-const Characters = ({ handleFav }) => {
+const Characters = ({ handleFav, fav }) => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [limit, setLimit] = useState(10);
 
   // Requete
   useEffect(() => {
     try {
       const fetchData = async () => {
-        let skipData = (page - 1) * 100;
+        let skipData = (page - 1) * limit;
+
         const response = await axios.get(
-          `https://marvel-backend-math.herokuapp.com/characters?&limit=100&skip=${skipData}&search=${search}`
+          `https://marvel-backend-math.herokuapp.com/characters?limit=${limit}&skip=${skipData}&search=${search}`
         );
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
+        window.scrollTo(0, 0);
       };
       fetchData();
     } catch (error) {
       console.log({ error: error.message });
     }
-  }, [page, search]);
+  }, [page, search, limit]);
 
   return isLoading ? (
     <h1>Loading...</h1>
   ) : (
     <div className="container">
-      <h1>Marvel's Characters</h1>
+      <h1>Marvel Characters</h1>
       <div className="box-search">
         <input
           className="searchBar"
@@ -55,7 +58,7 @@ const Characters = ({ handleFav }) => {
         {data.results.map((character, index) => {
           return (
             <CardHero
-              handleFav={handleFav}
+              fav={true}
               key={character._id}
               name={character.name}
               description={character.description}
@@ -74,7 +77,7 @@ const Characters = ({ handleFav }) => {
         >
           -
         </button>
-        <p className="page-number">{page}</p>
+        <p className="page-number">Page {page}</p>
         <button
           className="page-button"
           onClick={() => setPage(page + 1)}
@@ -82,6 +85,16 @@ const Characters = ({ handleFav }) => {
         >
           +
         </button>
+        <select
+          className="page-option"
+          name="result"
+          id="result"
+          onChange={(e) => setLimit(e.target.value)}
+        >
+          <option value="10">10 per page</option>
+          <option value="25">30 per page</option>
+          <option value="50">70 per page</option>
+        </select>
       </div>
     </div>
   );

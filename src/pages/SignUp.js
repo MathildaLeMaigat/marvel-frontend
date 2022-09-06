@@ -24,7 +24,7 @@ const SignUp = ({ handleToken }) => {
       // console.log(response.data);
 
       handleToken(response.data.token);
-
+      // console.log(handleToken);
       navigate("/characters");
     } catch (error) {
       console.log({ error: error.response });
