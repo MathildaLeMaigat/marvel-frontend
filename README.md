@@ -1,6 +1,6 @@
 ## Marvel | Project Front | React
 
-<div align="center">
+<div>
 <img src="src/assets/img/img1.png" width="100%">
 </div>
 <div>
@@ -16,3 +16,7 @@
 - Creating an Account
 - LogIn / LogOut
 - Responsive
+
+# desc
+
+Project made during my bootcamp at Le Reacteur | August 2022
