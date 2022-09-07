@@ -1,0 +1,68 @@
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-bottom: white 2px solid;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.header p {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
+.header a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  background-color: black;
+}
+
+.header img {
+  height: 50px;
+  width: 200px;
+  background-color: black;
+}
+
+.header button {
+  flex: 1;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  font-family: "Marvel", sans-serif;
+  background-color: black;
+}
+.header .logout-button {
+  color: red;
+  font-weight: bold;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 768px) {
+  .header img {
+    height: 30px;
+    width: 120px;
+    object-fit: contain;
+  }
+
+  .header {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .header button {
+    font-size: 13px;
+  }
+}

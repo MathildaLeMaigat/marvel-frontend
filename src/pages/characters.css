@@ -1,0 +1,97 @@
+/* Characters */
+.container-card {
+  /* border: 2px solid green; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-card > div:not(:nth-child(4n)) {
+  margin-right: 20px;
+}
+
+/* SEARCH BAR */
+.searchBar {
+  border: 1px white solid;
+  border-radius: 10px;
+  padding: 8px 70px;
+  color: white;
+  outline: none;
+  margin-bottom: 30px;
+}
+
+.box-search {
+  text-align: center;
+}
+
+.count {
+  font-size: 20px;
+  color: white;
+  margin-left: 30px;
+}
+
+.count-span {
+  color: red;
+  font-weight: bold;
+}
+
+/* PAGINATION */
+.pagination {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.page-button {
+  width: 60px;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.page-number {
+  color: white;
+  font-size: 30px;
+  padding: 0 30px;
+}
+
+.page-option {
+  color: white;
+  margin-left: 30px;
+  border-radius: 5px;
+  padding: 0 40px;
+  outline: none;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 768px) {
+  .container-card > div:not(:nth-child(4n)) {
+    margin-right: 0px;
+  }
+
+  .searchBar {
+    padding: 8px 50px;
+  }
+
+  .count {
+    font-size: 15px;
+  }
+
+  .pagination {
+    padding: 0;
+    margin-top: 30px;
+  }
+
+  .page-button {
+    width: 30px;
+  }
+  .page-number {
+    font-size: 22px;
+  }
+
+  .page-option {
+    padding: 0 30px;
+  }
+}

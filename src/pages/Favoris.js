@@ -1,3 +1,5 @@
+import "./favoris.css";
+
 // Imports
 import CardHero from "../components/CardHero";
 import CardComics from "../components/CardComics";

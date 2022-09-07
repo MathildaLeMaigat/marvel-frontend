@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ handleToken }) => {
+const SignUp = ({ handleToken, errorMessage, setErrorMessage }) => {
   // STATES
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -12,6 +12,7 @@ const SignUp = ({ handleToken }) => {
   // console.log("handletoken", handleToken);
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage("");
     try {
       const response = await axios.post(
         "https://marvel-backend-math.herokuapp.com/user/signup",
@@ -21,14 +22,20 @@ const SignUp = ({ handleToken }) => {
           password: password,
         }
       );
-      // console.log(response.data);
+      // console.log(response.data.token);
 
-      handleToken(response.data.token);
+      if (response.data) {
+        // console.log("victory!");
+        handleToken(response.data.token);
+        navigate("/characters");
+      }
       // console.log(handleToken);
-      navigate("/characters");
     } catch (error) {
       console.log({ error: error.response });
       console.log("catch", error);
+      if (error.response.status === 409) {
+        setErrorMessage("Sorry! this email already exists");
+      }
     }
   };
 
@@ -59,7 +66,8 @@ const SignUp = ({ handleToken }) => {
           onChange={(event) => {
             setPassword(event.target.value);
           }}
-        />
+        />{" "}
+        <p style={{ color: "red" }}>{errorMessage}</p>
         <button className="signup-button">Subscribe</button>
         {/* <input type="submit" value="Subscribe" /> */}
       </form>

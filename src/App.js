@@ -19,6 +19,7 @@ library.add(faHeart);
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // fonction a laquelle lorsque je lui donne quelque chose (token) elle
   // l'enregistre en tant que userToken
@@ -48,11 +49,25 @@ function App() {
 
           <Route
             path="/signup"
-            element={<SignUp handleToken={handleToken} userToken={userToken} />}
+            element={
+              <SignUp
+                handleToken={handleToken}
+                userToken={userToken}
+                errorMessage={errorMessage}
+                setErrorMessage={setErrorMessage}
+              />
+            }
           />
           <Route
             path="/login"
-            element={<LogIn handleToken={handleToken} userToken={userToken} />}
+            element={
+              <LogIn
+                handleToken={handleToken}
+                userToken={userToken}
+                errorMessage={errorMessage}
+                setErrorMessage={setErrorMessage}
+              />
+            }
           />
           <Route path="/" element={<Characters />} />
         </Routes>

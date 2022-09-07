@@ -1,0 +1,17 @@
+/* Fav */
+.img-fav {
+  width: 100px;
+  height: 100px;
+}
+
+.fav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.comics-box-fav {
+  margin-top: 100px;
+}

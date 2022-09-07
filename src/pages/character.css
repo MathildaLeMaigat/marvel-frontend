@@ -1,0 +1,42 @@
+/* Character */
+
+.hero-img {
+  width: 50%;
+  height: 100%;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  box-sizing: border-box;
+  /* border: black 2px solid; */
+  object-fit: cover;
+}
+
+.cardv2 {
+  border: black 3px solid;
+  display: flex;
+  background-color: wheat;
+  width: 600px;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.descriptionCharac {
+  background-color: wheat;
+  width: 100%;
+  height: 100%;
+  /* border: orange solid 2px; */
+  box-sizing: border-box;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 20px;
+  padding: 20px;
+  border: black 3px solid;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}

@@ -1,9 +1,12 @@
+import "./header.css";
+
 import { Link } from "react-router-dom";
 import logo from "../assets/img/marvel.logo.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = ({ handleToken, userToken }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="header">
@@ -12,23 +15,43 @@ const Header = ({ handleToken, userToken }) => {
       </Link>
 
       <Link to="/characters">
-        <p>Characters</p>
+        {location.pathname === "/characters" ? (
+          <p style={{ color: "red" }}>Characters</p>
+        ) : (
+          <p>Characters</p>
+        )}
       </Link>
       <Link to="/comics">
-        <p>Comics</p>
+        {location.pathname === "/comics" ? (
+          <p style={{ color: "red" }}>Comics</p>
+        ) : (
+          <p>Comics</p>
+        )}
       </Link>
 
       <Link to="/favoris">
-        <p>Favorites</p>
+        {location.pathname === "/favoris" ? (
+          <p style={{ color: "red" }}>Favorites</p>
+        ) : (
+          <p>Favorites</p>
+        )}
       </Link>
 
       {!userToken ? (
         <>
           <Link to="/login">
-            <button>Log In</button>
+            {location.pathname === "/login" ? (
+              <button style={{ color: "red" }}>Log In</button>
+            ) : (
+              <button>Log In</button>
+            )}
           </Link>
-          <Link to="signup">
-            <button>Sign Up</button>
+          <Link to="/signup">
+            {location.pathname === "/signup" ? (
+              <button style={{ color: "red" }}>Sign Up</button>
+            ) : (
+              <button>Sign Up</button>
+            )}
           </Link>
         </>
       ) : (

@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LogIn = ({ handleToken }) => {
+const LogIn = ({ handleToken, errorMessage, setErrorMessage }) => {
   // STATES
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +12,7 @@ const LogIn = ({ handleToken }) => {
   const handleSubmit = async (event) => {
     // Empeche le rafraichissement auto de la page
     event.preventDefault();
+    setErrorMessage("");
     try {
       const response = await axios.post(
         "https://marvel-backend-math.herokuapp.com/user/login",
@@ -22,10 +23,15 @@ const LogIn = ({ handleToken }) => {
         }
       );
       // console.log(response.data);
-      handleToken(response.data.token);
-      navigate("/characters");
+      if (response.data) {
+        // console.log("victory!");
+        handleToken(response.data.token);
+        navigate("/characters");
+      }
     } catch (error) {
       console.log({ error: error.response });
+      if (error.response.status === 401)
+        setErrorMessage("Sorry! your email/password are incorrects");
     }
   };
 
@@ -50,6 +56,7 @@ const LogIn = ({ handleToken }) => {
             setPassword(event.target.value);
           }}
         />
+        <p style={{ color: "red" }}>{errorMessage}</p>
         <button className="signin-button">Log In</button>
       </form>
     </div>
