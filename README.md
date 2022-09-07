@@ -17,6 +17,4 @@
 - LogIn / LogOut
 - Responsive
 
-# desc
-
-Project made during my bootcamp at Le Reacteur | August 2022
+[Project made during my bootcamp at Le Reacteur | August 2022]
