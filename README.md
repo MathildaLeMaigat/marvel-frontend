@@ -2,6 +2,8 @@
 
 <div align="center">
 <img src="src/assets/img/img1.png" width="100%">
+</div>
+<div>
 <img src="src/assets/img/img2.png" width="100%">
 </div>
 
