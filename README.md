@@ -1,7 +1,7 @@
 ## Marvel | Project Front | React
 
 <div align="center">
-<img src="assets/img/img1.png" width="100%">
+<img width="100%" src="src/assets/img/img1.png">
 </div>
 
 ## Features
@@ -10,4 +10,6 @@
 - Search by name
 - Pagination
 - Navigation
+- Creating an Account
+- LogIn / LogOut
 - Responsive
