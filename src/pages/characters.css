@@ -75,8 +75,15 @@
     padding: 8px 50px;
   }
 
+  .box-search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
   .count {
     font-size: 15px;
+    text-align: center;
   }
 
   .pagination {

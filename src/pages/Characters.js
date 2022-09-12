@@ -44,7 +44,7 @@ const Characters = ({ handleFav, fav }) => {
       <div className="box-search">
         <input
           className="searchBar"
-          placeholder="Search for a character"
+          placeholder="Search for a character..."
           type="text"
           value={search}
           onChange={(event) => {

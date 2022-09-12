@@ -65,4 +65,8 @@
   .header button {
     font-size: 13px;
   }
+
+  .header p {
+    font-size: 17px;
+  }
 }
