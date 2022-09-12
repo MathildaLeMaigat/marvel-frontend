@@ -15,7 +15,7 @@ const Header = ({ handleToken, userToken }) => {
       </Link>
 
       <Link to="/characters">
-        {location.pathname === "/characters" ? (
+        {location.pathname === "/characters" || location.pathname === "/" ? (
           <p style={{ color: "red" }}>Characters</p>
         ) : (
           <p>Characters</p>
